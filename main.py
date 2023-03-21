@@ -1,4 +1,5 @@
 from crud_cliente import *
+from crud_produto import *
 import os
 
 print("--------------")
@@ -110,6 +111,41 @@ match tabela_selecionada:
         print("3- ATUALIZAR")
         print("4- DELETAR")
         print("--------------")
+
+
+        funcao_selecionada = input("Selecione o que deseja fazer: ")
+
+        if (funcao_selecionada == "1"):
+            print("Cadastrando Produtos")
+            nome_cadastro = input("Digite o nome do produto: ")
+            id_vendedor = int(input("Digite o id do vendedor do produto: "))
+            qnt = int(input("Digite a quantidade do produto: "))
+            preco = float(input("Digite o preço do produto: "))
+            id_produto = input("Digite o id do produto: ")
+        
+            Produto_insert(nome_cadastro, id_vendedor, qnt, preco, id_produto)
+     
+        elif (funcao_selecionada == "2"):
+            Produto_searchAll()
+
+        elif (funcao_selecionada == "3"):
+            print("Atualizando produto")
+            print("Alterando a quantidade: ")
+            id_produto = input("Digite o id do produto que deseja alterar a quantidade: ")
+
+
+
+            nova_quantidade = int(input("Digite a nova quantidade: "))
+            Produto_update(id_produto,nova_quantidade)
+            
+
+            
+
+        elif(funcao_selecionada == "4"):
+            print("Deletar Produto")
+            id_produto = input("Digite o id do produto que deseja deletar: ")
+            Produto_deleteOne(id_produto)
+
 
 
 

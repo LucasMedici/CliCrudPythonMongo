@@ -7,10 +7,10 @@ mydb = client.MercadoLivre
 
 
 # Create
-def Produto_insert(nome, id_vendedor, qnt, preco): 
+def Produto_insert(nome, id_vendedor, qnt, preco, id_produto): 
     global mydb
     mycol = mydb.produtos
-    mydict = {"nome": nome, "id_vendedor": id_vendedor, "qnt":qnt, "preco":preco}
+    mydict = {"nome": nome, "id_vendedor": id_vendedor, "qnt":qnt, "preco":preco, "id_produto":id_produto}
     x = mycol.insert_one(mydict)
     print(x.inserted_id)
 
@@ -25,8 +25,24 @@ def Produto_searchAll():
 
 
 # Delete
-def Cliente_deleteOne(_id):
+def Produto_deleteOne(id_produto):
     global mydb
     mycol = mydb.produtos
-    myquery = {"_id":_id}
+    myquery = {"id_produto":id_produto}
     mycol.delete_one(myquery)
+
+
+
+
+#Update
+def Produto_update(id_produto, qnt_nova):
+    global mydb
+    mycol = mydb.produtos
+    myquery = {"id_produto": id_produto}
+    mydoc = mycol.find(myquery)
+    for x in mydoc:
+        print(x)
+        novo_valores = {"$set": {"qnt": qnt_nova}}
+
+
+        mycol.update_one(myquery, novo_valores)
