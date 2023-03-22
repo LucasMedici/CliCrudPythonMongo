@@ -1,5 +1,6 @@
 from crud_cliente import *
 from crud_produto import *
+from crud_vendedor import *
 import os
 
 print("--------------")
@@ -87,6 +88,49 @@ match tabela_selecionada:
         print("3- ATUALIZAR")
         print("4- DELETAR")
         print("--------------")
+
+
+        funcao_selecionada = input("Selecione o que deseja fazer: ")
+
+        if (funcao_selecionada == "1"):
+            print("Cadastrando Vendedor")
+            nome_cadastro = input("Digite o nome do vendedor: ")
+            email_cadastro = input("Digite o email: ")
+            print("Produtos: ")
+
+            
+            nome_produto_vendedor = input("Digite o nome do produto : ")
+            qnt_produto_vendedor = input("Digite a quantidade: ")
+            preco_produto_vendedor = input("Digite o preço: ")
+            produto_vendedor = {"nome":nome_produto_vendedor,"qnt":qnt_produto_vendedor,"preco":preco_produto_vendedor}
+
+            id_cadastro = input("Digite o id do vendedor: ")
+
+            vendedor_insert(nome_cadastro, email_cadastro, produto_vendedor, id_cadastro)
+     
+
+
+        elif (funcao_selecionada == "2"):
+            vendedor_searchAll()
+
+        elif (funcao_selecionada == "3"):
+            print("Atualizando vendedor")
+            print("Cadastrando um novo produto: ")
+            id_vendedor = input("Digite o id do vendedor que deseja cadastrar um novo produto: ")
+
+
+
+            novo_nome_produto_vendedor = input("Digite o nome do produto : ")
+            novo_qnt_produto_vendedor = input("Digite a quantidade: ")
+            novo_preco_produto_vendedor = input("Digite o preço: ")
+            novo_produto_vendedor = {"nome":novo_nome_produto_vendedor,"qnt":novo_qnt_produto_vendedor,"preco":novo_preco_produto_vendedor}
+
+            vendedor_Update(id_vendedor,novo_produto_vendedor)
+
+        elif(funcao_selecionada == "4"):
+            print("Deletar vendedor")
+            id_vendedor = input("Digite o id do vendedor que deseja deletar: ")
+            vendedor_deleteOne(id_vendedor)
         
 
 
