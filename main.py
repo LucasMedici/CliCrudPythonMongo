@@ -1,6 +1,7 @@
 from crud_cliente import *
 from crud_produto import *
 from crud_vendedor import *
+from crud_compras import *
 import os
 
 print("--------------")
@@ -207,9 +208,41 @@ match tabela_selecionada:
         print("TABELA DE COMPRAS:")
         print("1- CRIAR")
         print("2- MOSTRAR TODOS")
-        print("3- ATUALIZAR")
-        print("4- DELETAR")
+        print("3- DELETAR")
         print("--------------")
+
+
+
+
+
+        funcao_selecionada = input("Selecione o que deseja fazer: ")
+
+        if (funcao_selecionada == "1"):
+            print("Cadastrando Compras")
+           
+            id_usuario = input("Digite o id do comprador: ")
+            id_vendedor = input("Digite o id do vendedor: ")
+
+            print("Especificando Produto da compra")
+
+            nome_produto = input("Digite o nome do produto : ")
+            id_produto = input("Digite o id do produto: ")
+            preco_produto = input("Digite o preço: ")
+            qnt = input("Digite a quantidade: ")
+            produto_da_compra = {"nome_produto":nome_produto,"id_produto":id_produto,"preco_produto":preco_produto, "qnt":qnt}
+            
+            id_compra = input("Digite o id da compra: ")
+        
+            compras_insert(id_usuario, id_vendedor, produto_da_compra, id_compra)
+     
+        elif (funcao_selecionada == "2"):
+            compras_searchAll()
+   
+
+        elif(funcao_selecionada == "3"):
+            print("Deletar Compras")
+            id_compra = input("Digite o id da compra que deseja deletar: ")
+            compras_deleteOne(id_compra)
 
 
     case _:
