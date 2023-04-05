@@ -24,29 +24,38 @@ class MongoEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, obj)
 
 
-obj_em_string = json.dumps((obj_cliente),cls=MongoEncoder)
-print(obj_em_string)
-
+favoritos_em_string = json.dumps((obj_cliente['favoritos']),cls=MongoEncoder)
 
 def sincronizandoRedis():
-
-    conR.set('chave', obj_em_string)
-    # i=0
-    # for a in obj_cliente['favoritos']:
-    #     conR.lpush('lista_favoritos', obj_cliente['favoritos'][i]['id_produto'], obj_cliente['favoritos'][i]['nome_do_produto'])
-    #     i+=1
+    conR.delete('favoritos')
+    conR.set('favoritos', favoritos_em_string)
         
+        
+def novoFavorito():
+    os.system('cls')
+    print('### CADASTRANDO UM NOVO FAVORITO ###')
+    id_novofavorito = input("Digite o ID do novo favorito: ")
+    nome_novofavorito = input("Digite o nome do novo favorito: ")
+    novo_favorito = {"id_produto":id_novofavorito, "nome_produto":nome_novofavorito}
+    
+
+    favoritos_no_redis = str(conR.get('favoritos'))
+    
+    favoritos_formatados = favoritos_no_redis[0:(-1)-1]
+
+    novos_favoritos = f"{favoritos_formatados}, {novo_favorito}]"
+
+
+    # favoritos_em_json = json.loads(novos_favoritos)
+    # print(favoritos_em_json)
+   
+   
 
 sincronizandoRedis()
-print(conR.get('chave'))
-# print(conR.get('nome_Da_lista'))
+novoFavorito()
+# CRIAR FUNCAO PARA ATT MONGO atualizandoMongo()
 
-# os.system('cls')
-# print("### CADASTRANDO UM NOVO FAVORITO ###")
-# id_novofavorito = input("Digite o ID do novo favorito: ")
-# nome_novofavorito = input("Digite o nome do novo favorito: ")
 
-# novo_favorito = {"id_produto":id_novofavorito, "nome_produto":nome_novofavorito}
 
 # conR.set('favoritos', novo_favorito)
 
