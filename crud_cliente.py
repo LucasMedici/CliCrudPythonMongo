@@ -16,13 +16,14 @@ def Cliente_insert(nome, email, endereco,favoritos,cpf):
 
 
 # Find by id
-def Cliente_findQuery():
+def Cliente_findQuery(cpf):
     global mydb
     mycol = mydb.usuario
-    myquery = {"cpf": "522875"}
+    myquery = {"cpf": cpf}
     mydoc = mycol.find(myquery)
     for x in mydoc:
         print(x)
+    return x
 
 
 

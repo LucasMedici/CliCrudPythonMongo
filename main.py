@@ -53,14 +53,7 @@ match tabela_selecionada:
         elif (funcao_selecionada == "3"):
             print("Atualizando usuario")
             print("Cadastrando um novo endereço: ")
-            cpf = input("Digite o cpf do cliente que deseja cadastrar um novo endereco: ")
-
-
-
-            novo_logradouro = input("Digite o novo nome da rua: ")
-            novo_numero = input("Digite novo o número: ")
-            novo_bairro = input("Digite novo o bairro: ")
-            novo_endereco_cadastrado = {"logradouro":novo_logradouro,"numero":novo_numero,"bairro":novo_bairro}
+            
 
             Cliente_Update(cpf,novo_endereco_cadastrado)
 
