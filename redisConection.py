@@ -36,19 +36,24 @@ def novoFavorito():
     print('### CADASTRANDO UM NOVO FAVORITO ###')
     id_novofavorito = input("Digite o ID do novo favorito: ")
     nome_novofavorito = input("Digite o nome do novo favorito: ")
-    novo_favorito = {"id_produto":id_novofavorito, "nome_produto":nome_novofavorito}
+    novo_favorito = {"id_produto":id_novofavorito,"nome_produto":nome_novofavorito}
     
 
     favoritos_no_redis = str(conR.get('favoritos'))
     
-    favoritos_formatados = favoritos_no_redis[0:(-1)-1]
+    favoritos_formatados = favoritos_no_redis[1:(-1)-1]
 
     novos_favoritos = f"{favoritos_formatados}, {novo_favorito}]"
-
-
-    # favoritos_em_json = json.loads(novos_favoritos)
-    # print(favoritos_em_json)
+    novos_favoritos = novos_favoritos.replace("'", '"')
+    novos_favoritos = novos_favoritos.replace("[","")
+    novos_favoritos = novos_favoritos.replace("]","")
+    print(novos_favoritos)
    
+
+    jsonzada = json.loads(novos_favoritos)
+    print(jsonzada)
+
+
    
 
 sincronizandoRedis()
