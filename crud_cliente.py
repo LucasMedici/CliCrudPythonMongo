@@ -58,4 +58,13 @@ def Cliente_Update(cpf,novo_endereco):
 
         mycol.update_one(myquery, novo_valores)
 
+def SubstituindoClienteCompleto(cpf, novo):
+    global mydb
+    mycol = mydb.usuario
+    myquery = {"cpf": cpf}
+    mydict = mycol.find(myquery)
+    for x in mydict:
+        newvalues = {'$set': novo}
+        mycol.update_one(myquery, newvalues)
+        print('###Usuario atualizado###')
 

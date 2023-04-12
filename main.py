@@ -2,6 +2,7 @@ from crud_cliente import *
 from crud_produto import *
 from crud_vendedor import *
 from crud_compras import *
+import redisConection
 import os
 
 print("--------------")
@@ -51,11 +52,15 @@ match tabela_selecionada:
             Cliente_searchAll()
 
         elif (funcao_selecionada == "3"):
-            print("Atualizando usuario")
-            print("Cadastrando um novo endereço: ")
+            os.system('cls')
+            print("###Atualizando um cliente###")
+            print("1- Cadastrar favoritos pelo REDIS")
+            opcao = input("Digite a opção que deseja selecionar: ")
+            if(opcao == "1"):
+                redisConection.AddFavsPeloRedis()              
+            else:
+                print('numero invalido')
             
-
-            Cliente_Update(cpf,novo_endereco_cadastrado)
 
         elif(funcao_selecionada == "4"):
             print("Deletar usuario")
