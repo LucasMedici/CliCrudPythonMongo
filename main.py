@@ -55,11 +55,14 @@ match tabela_selecionada:
             os.system('cls')
             print("###Atualizando um cliente###")
             print("1- Cadastrar favoritos pelo REDIS")
+            print("2- Cadastrar enderecos pelo REDIS")
             opcao = input("Digite a opção que deseja selecionar: ")
             if(opcao == "1"):
                 redisConection.AddFavsPeloRedis()              
+            elif(opcao == "2"):
+                redisConection.AddEnderecoPeloRedis()
             else:
-                print('numero invalido')
+                print('número inválido!')
             
 
         elif(funcao_selecionada == "4"):
