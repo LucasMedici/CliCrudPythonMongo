@@ -75,7 +75,6 @@ def AddFavsPeloRedis():
 
 
 def AddEnderecoPeloRedis():
-
     
     class MongoEncoder(json.JSONEncoder):
         def default (self, obj):
@@ -126,3 +125,8 @@ def AddEnderecoPeloRedis():
     sincronizandoRedis()
     novoEndereco()
     sincronizandoMongo()
+
+
+
+def Login():
+    print('')
