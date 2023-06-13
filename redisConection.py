@@ -2,16 +2,16 @@ import redis
 import os
 import json
 import bson
+import time
 from bson import ObjectId
 
 from crud_cliente import *;
 
 
-
 conR = redis.Redis(
-  host='redis-13523.c14.us-east-1-3.ec2.cloud.redislabs.com',
-  port=13523,
-  password='C2JYyEBusx1c6TUlzgzP8zVfKa5ksi7j')
+  host='redis-15896.c11.us-east-1-3.ec2.cloud.redislabs.com',
+  port=15896,
+  password='W4OVpRQ6Mvjb92UacHghaeA4zvjp8fTc')
 
 
 def AddFavsPeloRedis():
@@ -128,5 +128,3 @@ def AddEnderecoPeloRedis():
 
 
 
-def Login():
-    print('')
